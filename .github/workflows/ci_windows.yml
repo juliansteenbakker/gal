@@ -2,18 +2,19 @@ name: Windows Integration Tests
 
 on:
   workflow_call:
+  workflow_dispatch:
 
 jobs:
   windows:
     runs-on: windows-latest
     timeout-minutes: 30
     strategy:
-        matrix:
-          windows-version: [10]
-        fail-fast: false
+      matrix:
+        windows-version: [10, 11]
+      fail-fast: false
     steps:
       - name: Check out
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Flutter SDK
         timeout-minutes: 10
